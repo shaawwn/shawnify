@@ -1,1 +1,1 @@
-// I'm a new hook!
+// I'm a new hook! On cleanup!
