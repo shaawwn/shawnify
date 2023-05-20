@@ -1,0 +1,6 @@
+FEATURES THAT I'LL PROBABLY HAVE TO IMPLEMENT MYSELF ON A DIFFERET SERVER
+
+Shelves - Basically spotify folders, but since the API doesn't support folders, create and manage folders with a seperate API 
+
+Filter LikedSongs - The ability to filter liked songs by artist as an easier way of getting liked songs from an artist (as opposed to ALL songs) by an artist.  This always bothered me in spotify that it's kind of hidden behind having to search for the artist first, but they seem to have recently made it easier.
+    - But since it isn't supported by the API it seems, I'll probably have to manage it seperately
