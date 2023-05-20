@@ -7,3 +7,9 @@ import {useState, useEffect} from 'react';
  * 
  * Take a playlist, clone it, then have the option to remove/add songs as you see fit
  */
+
+function CreatePlaylistMenu(props) {
+    // TODO
+}
+
+export default CreatePlaylistMenu
