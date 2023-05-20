@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// import queryString from 'query-string'
+import {useEffect, useState} from 'react'
+// Style imports
+import style from './styles/style.css'
+import componentStyle from './styles/componentStyles.css'
+import useAuth from './hooks/useAuth'
+
+//Component Imports
+import Login from './Login'
+import Dashboard from './views/Dashboard'
+
+const code = new URLSearchParams(window.location.search).get('code')
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  
+  return code ? <Dashboard code={code} /> : <Login />
 }
 
 export default App;
