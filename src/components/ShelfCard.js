@@ -12,7 +12,7 @@ export default function ShelfCard(props) {
 
     return(
         <div className="shelf-card" onClick={handleClick}>
-            <p>{truncateText(props.item.name)}</p>
+            <p className="shelf-card-title">{truncateText(props.item.name)}</p>
             {props.item.images.length > 0 ?
                 <img src={props.item.images[0].url} alt={props.item.id}/>
             // :<span>No Image</span>

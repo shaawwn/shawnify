@@ -1,4 +1,5 @@
 import {useState, useEffect, useRef} from 'react';
+import {getCurrentUser} from '../utils/apiGetFunctions';
 import useAuth from '../hooks/useAuth'
 import usePlaylists from '../hooks/usePlaylists';
 import usePlayback from '../hooks/usePlayback';
@@ -12,9 +13,10 @@ import LibraryView from '../views/LibraryView';
 import AlbumView from '../views/AlbumView';
 import ArtistView from '../views/ArtistView';
 import GridView from '../views/GridView'
-
+import CreatePlaylistView from '../views/CreatePlaylistView';
 import Navbar from '../components/Navbar';
 import Playbar from '../components/Playbar'
+import Modal from '../components/Modal'
 
 
 import HistoryNavigator from '../components/HistoryNavigator';
@@ -38,10 +40,12 @@ export default function Dashboard(props) {
     // const strictModeAuth = useRef(true)
     const accessToken = useAuth(props.code)
     const [playback, controls] = usePlayback(accessToken, false) 
+    const [user, setUser] = useState();
     // const [playback, controls] = useState() // Dummy test
     const history = useHistory()
     const [playlists, setPlaylists] = usePlaylists(accessToken)
     const [view, setView] = useState('home') // home
+    const [modal, setModal] = useState(false) // true to displayModal
     const [content, setContent] = useState(undefined)
 
 
@@ -81,8 +85,41 @@ export default function Dashboard(props) {
             setContent(viewContent)
         } else if(viewType === 'grid') {
             setView('grid')
+        } else if(viewType === 'createPlaylist') {
+            updateHistory(['createPlaylist', viewContent, logHistory])
+            setView('createPlaylist')
+            setContent(viewContent)
         }
         window.scrollTo(0, 0) // scroll back to top of window when switching views
+    }
+
+    function toggleModal(toDisplay) {
+        // modal is toggle OVER dashboard, therefore it needs to be toggle here
+        console.log("Toggling modal on/off", toDisplay)
+        setModal(true)
+        if(modal === true) {
+            setModal(false)
+        } else if(modal === false) {
+            setModal(true)
+        }
+    }
+
+    function displayModal() {
+        if(modal === true) {
+            return(
+                <Modal 
+                    toDisplay='createPlaylist'
+                    toggleModal={toggleModal}
+                    toggleView={toggleView}
+                    user={user}
+                    accessToken={accessToken}
+                />
+            )
+        } else {
+            return(
+                <span></span>
+            )
+        }
     }
 
     function displayView() {
@@ -93,6 +130,7 @@ export default function Dashboard(props) {
                     playlists={playlists} 
                     toggleView={toggleView}
                     controls={controls}
+                    toggleModal={toggleModal}
                 />
             )
         } else if(view === 'playlist') {
@@ -152,6 +190,16 @@ export default function Dashboard(props) {
                     title={'Your playlists'}
                 />
             )
+        } else if(view === 'createPlaylist') {
+            // console.log("Rendering create playlist view")
+            return(
+                <CreatePlaylistView 
+                    playlistID={content}
+                    toggleView={toggleView}
+                    accessToken={accessToken}
+                    controls={controls}
+                />
+            )
         }
     }
 
@@ -174,6 +222,12 @@ export default function Dashboard(props) {
         }
     }
 
+    useEffect(() => {
+        if(accessToken) {
+            getCurrentUser(accessToken, setUser)
+        }
+    }, [accessToken])
+
     useEffect(() => { 
         // console.log("Playback", playback)
     }, [playback])
@@ -190,6 +244,7 @@ export default function Dashboard(props) {
             <div className="dashboard">
                 {displayNavbar()}
                 <div className="view-container">
+                    {displayModal()}
                     <HistoryNavigator 
                         history={history}
                         toggleView={toggleView}

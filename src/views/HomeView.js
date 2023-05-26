@@ -4,6 +4,9 @@ import {useState, useEffect} from 'react'
 import Shelf from '../components/Shelf'
 import CardGrid from '../components/CardGrid'
 import Grid from '../components/Grid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faPlus} from '@fortawesome/free-solid-svg-icons'
+
 
 
 function HomeView(props) {
@@ -29,6 +32,8 @@ function HomeView(props) {
                 toggleView={props.toggleView}
                 controls={props.controls}
                 handlePagination={null}
+                createType={'playlist'}
+                toggleModal={props.toggleModal}
             />
 
         </div>

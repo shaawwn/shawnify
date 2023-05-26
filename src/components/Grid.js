@@ -1,9 +1,15 @@
 import {useState, useEffect} from 'react';
 
 import ShelfCard from '../components/ShelfCard'
+import ShelfAddCard from '../components/ShelfAddCard'
 import PlaylistCreate from '../components/PlaylistCreate'
 import {truncateText} from '../helpers/functions'
 import { v4 as uuidv4 } from 'uuid';
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faPlus} from '@fortawesome/free-solid-svg-icons'
+
 
 
 /**
@@ -62,6 +68,14 @@ function Grid(props) {
         if(props.items.length > 0) {
             return(
                 <>
+                    {props.createType === 'playlist'? 
+                    
+                    <ShelfAddCard 
+                        toggleModal={props.toggleModal}
+                        icon={faPlus}
+                    />
+                    :<span></span>
+                    }
                     {props.items.map((item) => 
                         <ShelfCard 
                             key={uuidv4()}
@@ -73,6 +87,7 @@ function Grid(props) {
                 </>
             )
         }
+
         return(
             <>
                 <h1>You have no playlists, create your first!</h1>
