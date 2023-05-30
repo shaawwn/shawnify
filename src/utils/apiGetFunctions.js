@@ -7,7 +7,7 @@ function getCurrentUser(accessToken, setUser) {
         }
     }).then((response) => response.json())
     .then((data) => {
-        console.log("USER DATA", data)
+        // console.log("USER DATA", data)
         setUser(data)
     })
 }

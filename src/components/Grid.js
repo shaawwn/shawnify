@@ -33,7 +33,7 @@ function Grid(props) {
     // props.handlePagination can be null, if so, do not add scroll event
     function handleClick() {
         // when clicking on the grid itself(and not a card), open a new view that shows ALL the content
-        console.log("Opening view")
+        // console.log("Opening view")
     }
 
 

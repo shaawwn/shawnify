@@ -16,12 +16,15 @@ import {faImage} from '@fortawesome/free-solid-svg-icons'
 
 // my new awesome palylist id = "37i7cmrZzQ3irpEJbyqIw9"
 const MYPLAYLISTID = '37i7cmrZzQ3irpEJbyqIw9'
+
+
 function CreatePlaylistMenu(props) {
-    // TODO
-    // console.log("USER in create playlsit", props.user.id)
+
     const [initial, setInitial] = useState(true) // setting to false indicates that the initial setup of a playlist has been compoleted and a user can start to search and add tracks
     const playlistID = useRef()
     // const [playlistID, setPlaylistID] = useState()
+
+
     function displayCreatePlaylistMenu() {
         if(initial === true) {
             return(
@@ -40,7 +43,7 @@ function CreatePlaylistMenu(props) {
         // console.log("'setting playlist', ", name, description, image)
         console.log("NAME", name, description, image)
         props.toggleModal()
-        props.toggleView('createPlaylist', MYPLAYLISTID)
+        props.toggleView('playlist', MYPLAYLISTID)
         // setPlaylistID('1234')
     }
     function handleClick(e) {
@@ -50,7 +53,6 @@ function CreatePlaylistMenu(props) {
         const image = 'imageLocation'
         const name = menu.firstChild.children[1].value
         const description = menu.children[1].value
-        // console.log("TARGET", image, name, description)
         _createPlaylist_('MyPlaylist', 'My test playlist', image)
         // createPlaylist(name, description, image)
     }
@@ -76,20 +78,12 @@ function CreatePlaylistMenu(props) {
                 // setPlaylistID(data.id)
                 playlistID.current = data.id
                 props.toggleModal()
-                props.toggleView('createPlaylist', data.id)
+                props.toggleView('playlist', data.id)
             // }
         }).catch(
             console.log("There was an error creating playlist.")
         )
     }
-
-    // useEffect(() => {
-    //     if(playlistID) {
-    //         // so it's attempting to render this an unrender it at the same time
-    //         props.toggleModal()
-    //         props.toggleView('createPlaylist', playlistID)
-    //     }
-    // }, [playlistID])
 
     return(
         <div className="create-playlist-menu">

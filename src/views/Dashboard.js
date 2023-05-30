@@ -5,23 +5,24 @@ import usePlaylists from '../hooks/usePlaylists';
 import usePlayback from '../hooks/usePlayback';
 import useHistory from '../hooks/useHistory';
 
-import PlaylistView from '../views/PlaylistView';
+// import PlaylistView from '../views/PlaylistView';
 import HomeView from '../views/HomeView';
 import SearchView from '../views/SearchView';
 import SearchResultsView from '../views/SearchResultsView';
 import LibraryView from '../views/LibraryView';
-import AlbumView from '../views/AlbumView';
+// import AlbumView from '../views/_AlbumView';
+import AlbumView from '../views/AlbumView'
 import ArtistView from '../views/ArtistView';
 import GridView from '../views/GridView'
-import CreatePlaylistView from '../views/CreatePlaylistView';
+import PlaylistView from './PlaylistView';
 import Navbar from '../components/Navbar';
 import Playbar from '../components/Playbar'
 import Modal from '../components/Modal'
 
 
 import HistoryNavigator from '../components/HistoryNavigator';
-import __TestView__ from '../views/__TestView__';
-import Tester from '../components/Tester';
+// import __TestView__ from '../views/__TestView__';
+// import Tester from '../components/Tester';
 
 /*
     Dashboard is the home page of the app, and by default acts as the 'Home' View (as opposed to playlist/library views)
@@ -41,10 +42,9 @@ export default function Dashboard(props) {
     const accessToken = useAuth(props.code)
     const [playback, controls] = usePlayback(accessToken, false) 
     const [user, setUser] = useState();
-    // const [playback, controls] = useState() // Dummy test
     const history = useHistory()
     const [playlists, setPlaylists] = usePlaylists(accessToken)
-    const [view, setView] = useState('home') // home
+    const [view, setView] = useState('home')
     const [modal, setModal] = useState(false) // true to displayModal
     const [content, setContent] = useState(undefined)
 
@@ -71,7 +71,8 @@ export default function Dashboard(props) {
             updateHistory(['results', null], logHistory)
             setView('results')
             setContent(viewContent)
-        }else if(viewType === 'playlist') {
+        }else if(viewType === 'playlist' || viewType === 'createPlaylist') {
+            // changing to createPlaylist
             updateHistory(['playlist', viewContent], logHistory)
             setView('playlist')
             setContent(viewContent)
@@ -85,17 +86,11 @@ export default function Dashboard(props) {
             setContent(viewContent)
         } else if(viewType === 'grid') {
             setView('grid')
-        } else if(viewType === 'createPlaylist') {
-            updateHistory(['createPlaylist', viewContent, logHistory])
-            setView('createPlaylist')
-            setContent(viewContent)
-        }
+        } 
         window.scrollTo(0, 0) // scroll back to top of window when switching views
     }
 
     function toggleModal(toDisplay) {
-        // modal is toggle OVER dashboard, therefore it needs to be toggle here
-        console.log("Toggling modal on/off", toDisplay)
         setModal(true)
         if(modal === true) {
             setModal(false)
@@ -136,20 +131,20 @@ export default function Dashboard(props) {
         } else if(view === 'playlist') {
             return(
                 <PlaylistView 
-                    playlistID={content} 
-                    accessToken={accessToken}
+                    playlistID={content}
                     toggleView={toggleView}
+                    accessToken={accessToken}
                     controls={controls}
-                    />
+                />
             )
         } else if(view === 'album') {
             return(
-                <AlbumView 
-                    albumID={content}
-                    accessToken={accessToken}
-                    toggleView={toggleView}
-                    controls={controls}
-                />
+                <AlbumView
+                playlistID={content}
+                toggleView={toggleView}
+                accessToken={accessToken}
+                controls={controls}
+        />
             )
         } else if(view === 'artist') {
             return(
@@ -193,7 +188,7 @@ export default function Dashboard(props) {
         } else if(view === 'createPlaylist') {
             // console.log("Rendering create playlist view")
             return(
-                <CreatePlaylistView 
+                <PlaylistView 
                     playlistID={content}
                     toggleView={toggleView}
                     accessToken={accessToken}
@@ -201,6 +196,16 @@ export default function Dashboard(props) {
                 />
             )
         }
+        // } else if(view === '_albumView') {
+        //     return(
+        //         <_AlbumView
+        //             playlistID={content}
+        //             toggleView={toggleView}
+        //             accessToken={accessToken}
+        //             controls={controls}
+        //     />
+        //     )
+        // }
     }
 
     function displayNavbar() {

@@ -23,6 +23,9 @@ class SpotifyPlaylist {
         this.tracks = []
     }
 
+    pagination() {
+        // as tracks load in longer playlists, add the, with this
+    }
     getPlaylist(setter) {
         fetch(`https://api.spotify.com/v1/playlists/${this.playlistID}`, {
             headers: {

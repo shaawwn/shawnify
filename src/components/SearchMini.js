@@ -5,69 +5,7 @@ import useSearch from '../hooks/useSearch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 
-const track = {
-    "album": {
-        "album_type": "compilation",
-        "artists": [
-            {
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/artist/6NeoLSPGwJLfeisvM36SMi"
-                },
-                "href": "https://api.spotify.com/v1/artists/6NeoLSPGwJLfeisvM36SMi",
-                "id": "6NeoLSPGwJLfeisvM36SMi",
-                "name": "SQUARE ENIX MUSIC",
-                "type": "artist",
-                "uri": "spotify:artist:6NeoLSPGwJLfeisvM36SMi"
-            }
-        ],
-        "external_urls": {
-            "spotify": "https://open.spotify.com/album/2kOD9QzcUkeT57RJkNvQpH"
-        },
-        "href": "https://api.spotify.com/v1/albums/2kOD9QzcUkeT57RJkNvQpH",
-        "id": "2kOD9QzcUkeT57RJkNvQpH",
-        "images": [
-            {
-                "height": 640,
-                "url": "https://i.scdn.co/image/ab67616d0000b273b9cccd9497d99a869dcbb8af",
-                "width": 640
-            },
-            {
-                "height": 300,
-                "url": "https://i.scdn.co/image/ab67616d00001e02b9cccd9497d99a869dcbb8af",
-                "width": 300
-            },
-            {
-                "height": 64,
-                "url": "https://i.scdn.co/image/ab67616d00004851b9cccd9497d99a869dcbb8af",
-                "width": 64
-            }
-        ],
-        "name": "CHRONO TRIGGER Original Soundtrack【DS Edition】",
-        "release_date": "1995",
-        "release_date_precision": "year",
-        "total_tracks": 78,
-        "type": "album",
-        "uri": "spotify:album:2kOD9QzcUkeT57RJkNvQpH"
-    },
-    "artists": [
-        {
-            "external_urls": {
-                "spotify": "https://open.spotify.com/artist/7cGkvEcOOYVtNdfkf3s1tK"
-            },
-            "href": "https://api.spotify.com/v1/artists/7cGkvEcOOYVtNdfkf3s1tK",
-            "id": "7cGkvEcOOYVtNdfkf3s1tK",
-            "name": "Yasunori Mitsuda",
-            "type": "artist",
-            "uri": "spotify:artist:7cGkvEcOOYVtNdfkf3s1tK"
-        }
-    ],
-    "duration_ms": 34840,
-    "id": "1734ITscJ2RDBZJpPZ94aU",
-    "name": "Presentiment",
-    "uri": "spotify:track:1734ITscJ2RDBZJpPZ94aU"
-}
-
-const TRACKS = [track, track, track, track]
+// 
 function SearchMini(props) {
 
     const searchTypes =["album", "artist", "playlist", "track", "show"]
@@ -163,6 +101,7 @@ function SearchMini(props) {
     }
 
     function handlePagination() {
+        console.log("HANDLING SEARCH PAGINATION")
         // handle the pagination for search results, including all types (album, track, artist)
         // console.log("Calling pagination from searchView")
         if(pagination.current === null) {
@@ -254,21 +193,21 @@ function SearchMini(props) {
     )
 }
 
-function ResultFilter(props) {
-    // filter results
-    const searchTypes =["all", "albums", "artists", "playlists", "tracks", "shows"]
+// function ResultFilter(props) {
+//     // filter results
+//     const searchTypes =["all", "albums", "artists", "playlists", "tracks", "shows"]
 
-    function handleClick(filter) {
-        props.toggleFilter(filter)
-    }
-    return(
-        <div className="search-filter">
-            {searchTypes.map((search) => 
-                <div key={search}className="search-filter-option" onClick={() => handleClick(search)}>
-                    <p key={search}>{search}</p>
-                </div>
-            )}
-        </div>
-    )
-}
+//     function handleClick(filter) {
+//         props.toggleFilter(filter)
+//     }
+//     return(
+//         <div className="search-filter">
+//             {searchTypes.map((search) => 
+//                 <div key={search}className="search-filter-option" onClick={() => handleClick(search)}>
+//                     <p key={search}>{search}</p>
+//                 </div>
+//             )}
+//         </div>
+//     )
+// }
 export default SearchMini
