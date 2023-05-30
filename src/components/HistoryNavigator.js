@@ -14,8 +14,10 @@ function HistoryNavigator(props) {
     
     function handleClick(direction) {
         // move back or forward in history
+        console.log("Handling click", direction)
         if(direction === 'back') {
             let [view, content] = props.history.back()
+            console.log("View: ", view, "Content: ", content)
             props.toggleView(view, content, false)
         } else if(direction === 'next') {
             let [view, content] = props.history.forward()

@@ -9,7 +9,8 @@
     --offwhite-hover: rgb(210, 210, 210);
     --faded-white: rgba(240, 240, 240, 0.7);
     --element-click-color: rgb(150,150,150);
-    --gradient-secondary: rgba(45, 80, 110, 0.1)
+    --gradient-secondary: rgba(45, 80, 110, 0.1);
+    --input-bg: #D2D7DC;
 }
 
 
@@ -76,6 +77,7 @@
 .history-nav {
     margin-left: 10px;
     margin-top: 10px; 
+    margin-bottom: 10px;
     /* background-color: red; */
     /* width: 100%; */
     /* margin: 0px; */
@@ -94,12 +96,136 @@
 .history-nav-icon:hover {
     background-color: var(--bg-black);
 }
+
+/* || Menus */
+
+.create-playlist-menu {
+    position: relative;
+    width: 700px;
+    height: 500px;
+    top: 100px;
+    left: 250px;
+    background-color: #375A78;
+}
+
+.create-playlist-menu-head {
+    display: flex;
+}
+
+.create-playlist-menu-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-playlist-menu-nameinput {
+    position: absolute;
+    left: 29.38%;
+    right: 15.36%;
+    top: 15.9%;
+    bottom: 72.43%;
+
+    /* header */
+    border: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    color: rgb(200, 200, 200);
+    line-height: 58px;
+    background-color: var(--bg-offwhite);
+
+}
+
+.create-playlist-menu-nameinput::placeholder {
+    color: var(--bg-offwhite);
+}
+.create-playlist-menu-head > p {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 48px;
+}
+
+.create-playlist-menu-btn {
+    position: absolute;
+    width: 290px;
+    height: 65px;
+    left: 388px;
+    top: 402px;
+    font-size: 24px;
+    background: var(--input-bg);
+    border-radius: 10px;
+}
+
+.create-playlist-menu-input {
+    font:inherit;
+    resize: none;
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 200px;
+    bottom: 130px;
+    font-size: 28px;
+    color: var(--bg-offblack);
+    border-radius: 2px;
+    background: var(--input-bg);
+}
+.create-playlist-search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* justify-content: space-evenly; */
+    /* background-color: red; */
+}
+.create-playlist-search-input {
+    width: 90%;
+}
+
+
+
+.track-table-mini {
+    width: 90%;
+    /* text-align:center; */
+    /* background-color: red; */
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.track-table-mini-head {
+    /* background-color: var(--bg-offblack); */
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.track-table-mini-head > th {
+    /* background-color: var(--bg-offblack); */
+    /* text-align: center; */
+}
+
+th {
+    text-align: left;
+    border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.table-hr {
+    width: 100%;
+}
+
+.track-table-mini-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    /* background-color: blue; */
+}
+.track-table-mini-cell {
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    text-align: left;
+}
 /* || LinkCard/Shelf/Grid */
 
     .shelf {
         display: flex;
         justify-content: center;
-        gap: 25px;
         background-color: var(--bg-offblack);
         max-width: 90%;
         height: 250px;
@@ -112,9 +238,12 @@
         text-align: center;
         padding: 10px;
         cursor: pointer;
-        /* background-color: red; */
-        width: 200px;
-        height: 200px;
+        /* background-color: var(--bg-black-hover); */
+        background-color: rgb(50, 50, 60);
+        border-radius: 5px;
+        width: 175px;
+        height: 175px;
+        margin: 10px;
     }
     
     .shelf-card > img {
@@ -122,9 +251,17 @@
         height: 100px;
     }
     
+    .shelf-card > svg {
+        margin-top: 15px;
+    }
+
     .shelf-card > p {
         max-height: 1rem;
         margin-bottom: 30px;
+    }
+
+    .shelf-card:hover {
+        background-color: rgb(55, 55, 65);
     }
 
     .link-card-carousel {
@@ -349,6 +486,12 @@
     /* background-color: red; */
 }
 
+.search-input-container-mini {
+    background-color: var(--offwhite);
+    border-radius: 50px;
+    width: 75%;
+    margin: auto;
+}
 .search-input-container {
     background-color: var(--offwhite);
     /* position: relative; */
@@ -527,18 +670,20 @@
         width: 100px;
         height: 100px;
         font-size: 14px;
-        background-color: var(--bg-black);
+        /* background-color: var(--bg-black); */
+        background-color: blue;
         /* border-radius: 10px; */
         text-align: center;
         /* overflow: hidden; */
     }
 
-    .shelf-card > p {
+    .shelf-card-title {
         font-size: 12px;
         font-weight: 200;
         margin-bottom: 15px;
         margin-top: 0px;
-        background-color: red;
+        color: red;
+        /* background-color: red; */
     }
 
 

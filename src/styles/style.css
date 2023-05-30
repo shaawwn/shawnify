@@ -66,7 +66,7 @@ a, a:active, a:visited {
 /* || View styles */
 
 .view-contaner {
-    width: 100vw;
+    width: 100%;
     margin: 0px;
 
 }
@@ -83,7 +83,7 @@ a, a:active, a:visited {
     /* width: 100%; */
 }
 
-.library-view, .playlist-view, .album-view, .artist-view, .home-view, .search-view {
+.library-view, .playlist-view, .album-view, .artist-view, .home-view, .search-view, .create-playlist-view {
     min-width: 80vw;
     max-width: 80vw;
     margin-bottom: 150px;
@@ -94,6 +94,17 @@ a, a:active, a:visited {
     /* margin-bottom: 200px; */
     /* overflow: hidden; */
     /* background-color: white; */
+}
+
+.modal {
+    /* width: 100%; */
+    width: 100vw;
+    min-height: 100%;
+    background-color: rgba(10, 10, 10, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
 }
 
 

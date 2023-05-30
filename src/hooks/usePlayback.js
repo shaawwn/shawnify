@@ -91,7 +91,7 @@ function usePlayback(accessToken, test) {
           }
         }).then((response) => response.json())
         .then((data) => {
-          console.log('user devices', data)
+        //   console.log('user devices', data)
           // find macbook only
           for(let i = 0; i < data.devices.length; i++) {
             // console.log('data devices', data.devices[i].name.includes('MacBook'))
@@ -125,7 +125,7 @@ function usePlayback(accessToken, test) {
             pause(devices[0].id, accessToken, current.is_playing)
             _refreshCurrentSong(accessToken, getCurrentSong)
         } else if(controlType === 'next') {
-            console.log("NEXT")
+            console.log("NEXT", context_uri)
             nextSong(accessToken)
             _refreshCurrentSong(accessToken, getCurrentSong)
         } else if(controlType === 'previous') {
@@ -135,11 +135,8 @@ function usePlayback(accessToken, test) {
             shuffle(accessToken, current.shuffle_state)
             _refreshCurrentSong(accessToken, getCurrentSong)
         }else if(controlType === 'start') {
-            // the error of currentSong unknown seems to only happen when you first start a track, but after that works fine
-            // ex. you navigate to an album, select any track, it starts palying, but when getCurrentSong is called, it returns basically ann empty object. However, if you select a different song at this point, it will then work as intended, returning a playback object showing song details, etc.
 
-            // console.log(context_uri, uris, offset, position_ms)
-            console.log("Hitting 'Start'", track)
+            console.log("Hitting 'Start'", track, context_uri, uris, offset)
             start(devices[0].id, accessToken, context_uri, uris, offset, position_ms) //context can be contextUri or uris
 
             setCurrent(track) // 

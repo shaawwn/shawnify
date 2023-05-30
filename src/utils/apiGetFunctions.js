@@ -1,4 +1,16 @@
 
+function getCurrentUser(accessToken, setUser) {
+
+    fetch(`https://api.spotify.com/v1/me`, {
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    }).then((response) => response.json())
+    .then((data) => {
+        // console.log("USER DATA", data)
+        setUser(data)
+    })
+}
 
 function getTopTracks(artistID, accessToken, setTopTracks) {
     fetch(`https://api.spotify.com/v1/artists/${artistID}/top-tracks?market=US`, {
@@ -28,5 +40,6 @@ function getAlbums(artistID, accessToken, setAlbums) {
 
 module.exports = {
     getTopTracks,
-    getAlbums
+    getAlbums,
+    getCurrentUser
 }

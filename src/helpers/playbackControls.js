@@ -55,7 +55,7 @@ function start(deviceID, accessToken, context_uri=null, uris=null, offset=null, 
     if(position_ms !== 0) {
         payload.position_ms = position_ms
     }
-    // console.log("Payload", payload)
+    console.log("Payload", payload)
     fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceID}`, {
         method: "PUT",
         headers: {

@@ -80,8 +80,8 @@ function TopResultCard(props) {
 
     function handleClick(id) {
         //
-        // props.toggleView('artist', id)
-        console.log("Clicking", id)
+        props.toggleView('artist', id)
+        // console.log("Clicking", id)
     }
     return(
         <div className="top-result-card" onClick={() => handleClick(props.results.id)}>

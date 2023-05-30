@@ -325,7 +325,6 @@ function ResultFilter(props) {
             )}
         </div>
     )
-
 }
 
 export default SearchView;
