@@ -4,7 +4,7 @@ import SpotifyPlaylist from '../utils/SpotifyPlaylist';
 import useTracks from '../hooks/useTracks';
 import usePlaylist from '../hooks/usePlaylist'
 import {useSearch} from '../hooks/useSearch';
-// import TrackTableMini from '../components/TrackTableMini';
+
 import TrackTable from '../components/TrackTable'
 import SearchMini from '../components/SearchMini'
 import PlaylistBanner from '../components/PlaylistBanner'
