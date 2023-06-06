@@ -88,7 +88,7 @@ function ArtistView(props) {
             }
         }).then((response) => response.json())
         .then((data) => {
-            // console.log('Artist data', data)
+            console.log('Artist data', data)
             setArtist(data)
         })
     }
@@ -191,27 +191,29 @@ function TopTracks(props) {
     //     // props.controls('start', id, context, trackPosition)
     // }
 
-    function handleClick(id, offset) {
+    function handleClick(id, track) {
         // id is track id
         // play selected track
         // when handled from library, no need context, just play the song (not true I think)
-
+            props.controls('start', null, [`spotify:track:${id}`], null, 0, track)
         if(props.viewType === 'library') {
 
             // console.log("Library view dont use context_uri", createContextArray(props.tracks))
-            props.controls('start', null, createContextArray(props.tracks), null, 0)
+            props.controls('start', null, createContextArray(props.tracks), null, 0, track)
             return false
         } 
-        const context_uri = `spotify:artist:${id}`
+        const context_uri = `spotify:track:${id}`
 
-        props.controls('start', context_uri, null, null, 0) // don't need position_ms, for now at least
+        // props.controls('start', context_uri, null, null, 0) // don't need position_ms, for now at least
+        // console.log("ARTIST TRACK", track)
+        props.controls('start', null, [`spotify:track:${id}`], null, 0, {track})
     }
 
     return(
         <div className="top-tracks-container">
             <h1>Popular</h1>
             {props.topTracks.map((track) => 
-                <div key={track.id} className="top-track-row" onClick={() => handleClick(track.id)}>
+                <div key={track.id} className="top-track-row" onClick={() => handleClick(track.id, track)}>
                     <img src={track.album.images[2].url} alt={track.album.name}></img>
                     <p>{truncateText(track.name)}</p>
                     <p>{truncateText(track.album.name)}</p>

@@ -15,6 +15,7 @@ function isAlphaNumeric(str) {
 
 function truncateText(text) {
 // if text > certain length, replace with ellipsis
+// console.log("TRAUNCATED", text)
 
 
 let charLimit = 30

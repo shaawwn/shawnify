@@ -6,7 +6,7 @@ import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import CardGrid from '../components/CardGrid';
 import Grid from '../components/Grid';
 import HistoryNavigator from '../components/HistoryNavigator';
-import TrackTable from '../components/TrackTable'
+import TrackTable from '../components/_TrackTable'
 import useSearch from '../hooks/useSearch';
 
 

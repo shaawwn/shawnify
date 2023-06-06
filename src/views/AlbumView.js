@@ -4,7 +4,8 @@ import SpotifyPlaylist from '../utils/SpotifyPlaylist';
 import useTracks from '../hooks/useTracks';
 import usePlaylist from '../hooks/usePlaylist'
 import {useSearch} from '../hooks/useSearch';
-import TrackTableMini from '../components/TrackTableMini';
+// import TrackTableMini from '../components/TrackTableMini';
+import TrackTable from '../components/TrackTable'
 import SearchMini from '../components/SearchMini'
 import PlaylistBanner from '../components/PlaylistBanner'
 
@@ -14,6 +15,10 @@ function AlbumView(props) {
     // albums have less functionality than playlists (cannot add/remove, etc and for the most part will have < 100 tracks, so no need the hook, at least for now.)
     const [album, setAlbum] = useState()
 
+    function trackScroll() {
+        //
+    }
+
     function getAlbum() {
         fetch(`https://api.spotify.com/v1/albums/${props.playlistID}`, {
             headers: {
@@ -21,8 +26,19 @@ function AlbumView(props) {
             }
         }).then((response) => response.json())
         .then((data) => {
-
+            // console.log("ALBUM DATA", data)
             setAlbum(data)
+        })
+    }
+
+    function getAlbumTracks() {
+        fetch(`https://api.spotify.com/v1/albums/${props.playlistID}/tracks`, {
+            headers: {
+                'Authorization': `Bearer ${props.accessToken}`
+            }
+        }).then((response) => response.json())
+        .then((data) => {
+            // console.log("Album tracks only", data)
         })
     }
 
@@ -34,13 +50,13 @@ function AlbumView(props) {
                     playlist={album} 
                     viewType="album"
                 />
-                <TrackTableMini 
+                <TrackTable 
+                    playlist={false}
                     tracks={album.tracks.items}
-                    toggleView={props.toggleView}
-                    viewType='album'
+                    metaData={album}
                     controls={props.controls}
-                    albumDetails={album}
-                    context_id={props.playlistID}
+                    toggleView={props.toggleView}
+                    trackScroll={trackScroll}
                 />
             </>
 

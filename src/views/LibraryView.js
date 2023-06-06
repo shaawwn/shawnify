@@ -1,6 +1,6 @@
 import {useState, useEffect, useCallback} from 'react';
 import useTracks from '../hooks/useTracks';
-import TrackTable from '../components/TrackTable'
+import TrackTable from '../components/_TrackTable'
 import HistoryNavigator from '../components/HistoryNavigator'
 
 /**

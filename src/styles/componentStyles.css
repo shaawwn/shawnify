@@ -11,6 +11,7 @@
     --element-click-color: rgb(150,150,150);
     --gradient-secondary: rgba(45, 80, 110, 0.1);
     --input-bg: #D2D7DC;
+    --font-secondary: rgb(200, 200, 200);
 }
 
 
@@ -416,6 +417,19 @@ th {
     cursor: pointer;
 }
 
+.track-table-item-title-box {
+    display: grid;
+    gap: 5px;
+}
+
+.track-table-item-title-artist {
+    font-size: 18px;
+    color: var(--font-secondary);
+}
+
+.track-table-item-title-artist:hover {
+    text-decoration:underline;
+}
 .top-tracks-container {
     display: flex;
     flex-direction: column;

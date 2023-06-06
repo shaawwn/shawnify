@@ -41,7 +41,7 @@ function usePlaylist(accessToken, playlistID) {
             }
         }).then((response) => response.json())
         .then((data) => {
-            // console.log("Setting playlist in new hook", data)
+            console.log("Setting playlist in new hook", data)
             setPlaylist(data)
             setTracks(data.tracks.items)
             pagination.current = data.tracks.next
@@ -49,6 +49,20 @@ function usePlaylist(accessToken, playlistID) {
         }).catch((data) => {
             console.log("There was an error fetching playlist", data)
         })   
+    }
+
+    function getPlaylistItems() {
+        let fields = 'items(track.id, track.name, track.artists, track.album(!available_markets), track.duration_ms, track.uri), limit, offset, next, previous, total'
+
+        fetch(`https://api.spotify.com/v1/playlists/${playlistID}/tracks?fields=${fields}`, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => response.json())
+        .then((data) => {
+            console.log("Getting items only: ", data)
+        })
     }
 
     function removeTrack(track) {
@@ -139,18 +153,18 @@ function usePlaylist(accessToken, playlistID) {
     useEffect(() => {
         if(accessToken) {
             getPlaylist()
+            // getPlaylistItems()
         }
     }, [])
 
     useEffect(() => {
         getPlaylist()
+        // getPlaylistItems()
     }, [playlistID])
 
     useEffect(() => {
         // re-render when users remove/add tracks with 'reload' as the trigger state
-        // if(accessToken) {
-        //     getPlaylist()
-        // }
+        // removed accessToken conditional, since it shouldn't get to this point without an accessToken anyways
         getPlaylist()
     }, [reload])
     

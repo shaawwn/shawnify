@@ -5,6 +5,7 @@ import useTracks from '../hooks/useTracks';
 import usePlaylist from '../hooks/usePlaylist'
 import {useSearch} from '../hooks/useSearch';
 import TrackTableMini from '../components/TrackTableMini';
+import TrackTable from '../components/TrackTable'
 import SearchMini from '../components/SearchMini'
 import PlaylistBanner from '../components/PlaylistBanner'
 
@@ -25,7 +26,7 @@ function PlaylistView(props) {
                     playlist={playlist} 
                     viewType="playlist"
                 />
-                <TrackTableMini 
+                {/* <TrackTableMini 
                     tracks={tracks}
                     toggleView={props.toggleView}
                     viewType='playlist'
@@ -33,6 +34,14 @@ function PlaylistView(props) {
                     controls={props.controls}
                     removeTrack={removeTrack}
                     addTrack={addTrack}
+                    trackScroll={trackScroll}
+                /> */}
+                <TrackTable 
+                    playlist={true}
+                    tracks={tracks}
+                    metaData={playlist}
+                    controls={props.controls}
+                    toggleView={props.toggleView}
                     trackScroll={trackScroll}
                 />
             </>
