@@ -5,7 +5,6 @@ export default function NavbarDropdown(props) {
 
 
     function handleClick(playlistID) {
-        console.log("TOGGLEING NAV PLAYLIST", playlistID)
         props.toggleView('playlist', playlistID)
     }
     

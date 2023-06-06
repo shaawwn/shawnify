@@ -41,7 +41,7 @@ function usePlaylist(accessToken, playlistID) {
             }
         }).then((response) => response.json())
         .then((data) => {
-            console.log("Setting playlist in new hook", data)
+            // console.log("Setting playlist in new hook", data)
             setPlaylist(data)
             setTracks(data.tracks.items)
             pagination.current = data.tracks.next

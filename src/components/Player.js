@@ -3,9 +3,7 @@ import {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faRepeat, faPlay, faBackwardStep, faForwardStep, faRandom, faPause} from '@fortawesome/free-solid-svg-icons'
 
-/**
- * 
-    
+/*
 The player itself I think should be rather small and JUST be the playbutton components, and be a component of the larger playbar
 
     is_playing
@@ -17,7 +15,7 @@ The player itself I think should be rather small and JUST be the playbutton comp
 */
 
 function Player(props) {
-    // console.log("PLAYER PROPS", props)
+
     const [playState, setPlayState] = useState(false)
     const [shuffleState, setShuffleState] = useState(false)
     const [repeatState, setRepeatState] = useState(false)
@@ -65,7 +63,6 @@ function Player(props) {
     useEffect(() => {
 
         if(props.playback) {
-            // console.log('player', props.playback.isPlaying)
             if(props.playback === true) {
                 setPlayState(true)
             } else {
@@ -78,7 +75,7 @@ function Player(props) {
             }
         }
 
-    }, [props.playback]) // changed fom props.currentlyPlaying
+    }, [props.playback]) 
 
 
 
@@ -110,7 +107,6 @@ function ProgressBar(props) {
             <p>Current</p>
             <hr></hr>
             <p>Final</p>
-            {/* <hr></hr> */}
         </div>
     )
 }

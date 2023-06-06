@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-// import { ShelfCard } from './LinkCard';
 import ShelfCard from './ShelfCard'
 import {truncateText} from '../helpers/functions';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,11 +7,9 @@ import { v4 as uuidv4 } from 'uuid';
     CardGrid takes an object of albums/playlists/artists and displays the shelf cards of those
 */
 function CardGrid(props) {
-    // console.log('grid props', props.results)
 
     function handleScroll() {
         if(window.innerHeight + 1 + window.scrollY >= document.body.offsetHeight) {
-            // console.log("Scrolling")
             props.handlePagination()
             window.scrollTo(0, document.documentElement.scrollTop)
         }
@@ -27,12 +24,10 @@ function CardGrid(props) {
     }, [])
 
     return(
-        // removed style={{display: 'flex', flexWrap: 'wrap'}} from div
         <div className="card-grid-grid" >
-            {/* <h1>I'm a grid!</h1> */}
             {props.results.map((result) => 
                 <ShelfCard
-                    key={uuidv4()} // BUG SO MAYBE THERE IS AN ISSUE WITH HOW IT IS USING A KEY WHICH CAUSES THE DUPLICATION?
+                    key={uuidv4()} 
                     item={result}
                     toggleView={props.toggleView}
                 />

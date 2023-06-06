@@ -5,25 +5,14 @@ import TrackTableMini from '../components/TrackTableMini'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faImage} from '@fortawesome/free-solid-svg-icons'
 
-// create playlist menu
-// 'clone' playlist so can edit yoursel
-/**
- * 
- * Take a playlist, clone it, then have the option to remove/add songs as you see fit
- * 
- * Instead, go to playlist Create View
- */
 
-// my new awesome palylist id = "37i7cmrZzQ3irpEJbyqIw9"
 const MYPLAYLISTID = '37i7cmrZzQ3irpEJbyqIw9'
 
 
 function CreatePlaylistMenu(props) {
 
-    const [initial, setInitial] = useState(true) // setting to false indicates that the initial setup of a playlist has been compoleted and a user can start to search and add tracks
+    const [initial, setInitial] = useState(true) 
     const playlistID = useRef()
-    // const [playlistID, setPlaylistID] = useState()
-
 
     function displayCreatePlaylistMenu() {
         if(initial === true) {
@@ -40,11 +29,9 @@ function CreatePlaylistMenu(props) {
     }
 
     function _createPlaylist_(name, description, image) {
-        // console.log("'setting playlist', ", name, description, image)
-        console.log("NAME", name, description, image)
+        // leaving this here for now to bypass the playlist creation
         props.toggleModal()
         props.toggleView('playlist', MYPLAYLISTID)
-        // setPlaylistID('1234')
     }
     function handleClick(e) {
         // get name, desc, image (not image for now)
@@ -54,7 +41,6 @@ function CreatePlaylistMenu(props) {
         const name = menu.firstChild.children[1].value
         const description = menu.children[1].value
         _createPlaylist_('MyPlaylist', 'My test playlist', image)
-        // createPlaylist(name, description, image)
     }
 
     function createPlaylist(name, description, image) {
@@ -73,13 +59,10 @@ function CreatePlaylistMenu(props) {
         }).then((response) => response.json())
         .then((data) => {
             console.log("CREATE PLAYLIST DATA", data)
-            // if(data.code === 201) {
                 console.log("Playlist created")
-                // setPlaylistID(data.id)
                 playlistID.current = data.id
                 props.toggleModal()
                 props.toggleView('playlist', data.id)
-            // }
         }).catch(
             console.log("There was an error creating playlist.")
         )
@@ -119,12 +102,10 @@ function CreatePlaylistDetailsMenu(props) {
     }
 
     function handleClick(e) {
-        // console.log("Creating playlist......", e.target.parentNode)
         const menu = e.target.parentNode
         const image = 'imageLocation'
         const name = menu.firstChild.children[1]
         const description = menu.children[1]
-        // console.log(menu.children, name.value, description.value)
         createPlaylist(image, name, description)
 
     }

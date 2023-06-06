@@ -2,11 +2,7 @@ import {useState, useEffect} from 'react';
 import {truncateText} from '../helpers/functions'
 // import componentStyle from '../styles/componentStyles.css'
 
-/**
- * 
- * Link card takes playlist object as props, with syntax
- * playlist.id, playlist.images[0], playlist.name, etc
- */
+
 function LinkCard(props) {
 
     function handleClick(playlistID) {
@@ -23,10 +19,8 @@ function LinkCard(props) {
 
 function ShelfCard(props) {
     // specifically for displaying on the shelf
-    // console.log('shelf card props', props)
 
     function handleClick(id) {
-        // console.log("Clicking", props.item.id)
         props.toggleView(props.item.type, props.item.id)
     }
 
@@ -36,19 +30,15 @@ function ShelfCard(props) {
             {props.item.images.length > 0 ?
                 <img src={props.item.images[0].url} alt={props.item.id}/>
             :<span>No Image</span>
-            // Give a blank image if span
             }
-            {/* <img src={props.item.images[0].url} alt={props.item.id}/> */}
         </div>
     )
 }
 
 function LinkCardAlbum(props) {
     // link card but looks more like an album cover
-    // takes album/playlist object as props
-    // console.log("Link card album props", props)
+    // takes album/playlist object as props)
     function handleClick(albumID) {
-        // console.log("Album id", albumID)
         props.toggleView('album', albumID)
     }
 

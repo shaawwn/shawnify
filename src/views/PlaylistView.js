@@ -54,25 +54,3 @@ function PlaylistView(props) {
 
 export default PlaylistView
 
-
-// GRAVEYARD
-    // function _getPlaylist_() {
-    //     // mimicking the request to the API to get the playlist details
-    //     console.log("PROPS", props.playlistID)
-    //     // setPlaylist(props.playlistID)
-    //     // setTracks([])
-    // }
-
-    // function getPlaylist() {
-    //     // the real deal
-    //     fetch(`https://api.spotify.com/v1/playlists/${props.playlistID}`, {
-    //         headers: {
-    //             'Authorization': `Bearer ${props.accessToken}`
-    //         }
-    //     }).then((response) => response.json())
-    //     .then((data) => {
-    //         console.log("PLAYLIST DATA CREATE", data)
-    //         // setPlaylist(data)
-    //         // setTracks(data.tracks)
-    //     })
-    // }

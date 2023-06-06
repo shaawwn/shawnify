@@ -10,11 +10,9 @@ import {msToMinutesAndSeconds} from '../helpers/functions'
 */
 function Playbar(props) {
 
-    // console.log("Playbar props", props.playback.currentTrack)
+
     useEffect(() => {
-        // console.log('props in playbar currently playing useEffect', props)
-        // console.log('changing song', props.playback)
-        // console.log("Playbar props", props.playback)
+
     }, [props.playback])
 
     function displayProgress(progress, duration, count) {
@@ -57,7 +55,7 @@ function Playbar(props) {
 }
 
 function TrackDetailCard(props) {
-    // console.log("DETAIL", props)
+
     if(props.playback === undefined) {
         // console.log('no suong currenlty playing', props.playback)
     }
@@ -65,7 +63,7 @@ function TrackDetailCard(props) {
     function displaySkeleton() {
         return(
             <>
-                {/* <img src="#" alt="track-detail-skeleton" /> */}
+
                 <div className="card-track-details">
                     {/* <p style={{fontSize: '18px', color: 'rgb(245,245,245)'}}>No song selected</p> */}
                     {/* <p style={{fontSize: '14px', color: 'rgb(200,200,200)'}}>Track Artist</p>                     */}
@@ -89,10 +87,9 @@ function TrackDetailCard(props) {
     }
 
     useEffect(() => {
-        // console.log('playback in playbar', props.currentTrack)
+
     }, [props.playback])
 
-    // console.log('current track details in card', props, empty)
     return(
         <div className="track-detail-card">
             {props.currentTrack ? 
@@ -136,7 +133,7 @@ function ProgressBar(props) {
     }
 
     useEffect(() => {
-        // console.log('rendering progress', props.progress, props.duration)
+   
     }, [])
     return(
         <div className="progress-bar">

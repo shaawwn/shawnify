@@ -7,7 +7,6 @@ import {useState, useEffect} from 'react';
 function PlaylistBanner(props) {
     // name, picture, creator, num_songs, 
     // props.library == true the playlist is set to library
-    // console.log('banner props', props)
     function displayBanner(viewType) {
         if(viewType === 'playlist') {
             return displayPlaylistBanner()
@@ -17,8 +16,6 @@ function PlaylistBanner(props) {
     }
 
     function displayAlbumBanner() {
-        // console.log('banner props', props)
-        // props.playlist
         return(<>
             <img src={props.playlist.images[0].url} alt={props.playlist.name} />
             <div className="playlist-banner-details">
@@ -43,10 +40,9 @@ function PlaylistBanner(props) {
             </div>
         )
     }
-    // funciton 
+
     function displayPlaylistBanner() {
         // also display length of playlist in time
-
         return(<>
                 <img src={props.playlist.images[0].url} alt={props.playlist.name} />
                 <div className="playlist-banner-details">

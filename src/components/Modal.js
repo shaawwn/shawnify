@@ -7,15 +7,15 @@ function Modal(props) {
     // toDisplay is the content that should be loaded on top of the modal, eg the CreatPlaylistMenu
     function handleClick(e) {
         e.stopPropagation()
-        // console.log(e.target.className)
+
         if(e.target.className !== 'modal') {
             // do nothing
         } else {
-            // window.confirm("Do you want to close the menu?")
+
             if(window.confirm("Do you want to cancel playlist creation?")) { // add React component here instead of JS confirm
                 props.toggleModal()
             } 
-            // toggleModal()
+
         }
         
     }
