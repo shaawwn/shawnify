@@ -5,12 +5,10 @@ import usePlaylists from '../hooks/usePlaylists';
 import usePlayback from '../hooks/usePlayback';
 import useHistory from '../hooks/useHistory';
 
-// import PlaylistView from '../views/PlaylistView';
 import HomeView from '../views/HomeView';
 import SearchView from '../views/SearchView';
 import SearchResultsView from '../views/SearchResultsView';
 import LibraryView from '../views/LibraryView';
-// import AlbumView from '../views/_AlbumView';
 import AlbumView from '../views/AlbumView'
 import ArtistView from '../views/ArtistView';
 import GridView from '../views/GridView'
@@ -21,9 +19,6 @@ import Modal from '../components/Modal'
 
 
 import HistoryNavigator from '../components/HistoryNavigator';
-// import __TestView__ from '../views/__TestView__';
-// import Tester from '../components/Tester';
-
 /*
     Dashboard is the home page of the app, and by default acts as the 'Home' View (as opposed to playlist/library views)
     Dashboard needs to:
@@ -32,13 +27,11 @@ import HistoryNavigator from '../components/HistoryNavigator';
 
     Dashboard is basically the App container, and holds all the views, navbar, etc, so toggling views is just toggling whatever page view is being displayed IN the dashboard
 
-    TODOS?
 */
 
 
 export default function Dashboard(props) {
-    // console.log("Loading dashboard")
-    // const strictModeAuth = useRef(true)
+
     const accessToken = useAuth(props.code)
     const [playback, controls] = usePlayback(accessToken, false) 
     const [user, setUser] = useState();
@@ -72,7 +65,6 @@ export default function Dashboard(props) {
             setView('results')
             setContent(viewContent)
         }else if(viewType === 'playlist' || viewType === 'createPlaylist') {
-            // changing to createPlaylist
             updateHistory(['playlist', viewContent], logHistory)
             setView('playlist')
             setContent(viewContent)
@@ -186,7 +178,6 @@ export default function Dashboard(props) {
                 />
             )
         } else if(view === 'createPlaylist') {
-            // console.log("Rendering create playlist view")
             return(
                 <PlaylistView 
                     playlistID={content}
@@ -196,16 +187,6 @@ export default function Dashboard(props) {
                 />
             )
         }
-        // } else if(view === '_albumView') {
-        //     return(
-        //         <_AlbumView
-        //             playlistID={content}
-        //             toggleView={toggleView}
-        //             accessToken={accessToken}
-        //             controls={controls}
-        //     />
-        //     )
-        // }
     }
 
     function displayNavbar() {
@@ -234,17 +215,9 @@ export default function Dashboard(props) {
     }, [accessToken])
 
     useEffect(() => { 
-        // console.log("Playback", playback)
+
     }, [playback])
 
-    // return(
-    //     <div className="dashboard">
-    //         {/* <h1>Fetch testing.</h1> */}
-    //         <Tester 
-    //                 accessToken={accessToken}
-    //         />
-    //     </div>
-    // )
     return(
             <div className="dashboard">
                 {displayNavbar()}
@@ -270,10 +243,3 @@ export default function Dashboard(props) {
 
 // GRAVEYARD
 
-// import LinkCardCarousel from '../components/LinkCardCarousel'
-// import SpotifyApi from '../helpers/SpotifyApi'
-// import {LinkCard} from '../components/LinkCard';
-
-// const [user, setUser] = useState()
-// const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState([])
-// const api = new SpotifyApi(accessToken)
