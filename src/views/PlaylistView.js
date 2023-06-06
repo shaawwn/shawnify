@@ -15,8 +15,6 @@ function PlaylistView(props) {
 
     const [playlist, tracks, addTrack, removeTrack, trackScroll] = usePlaylist(props.accessToken, props.playlistID)
 
-    // const [reload, setReload] = useState(false)
-
 
     function displayContent() {
 
@@ -26,16 +24,6 @@ function PlaylistView(props) {
                     playlist={playlist} 
                     viewType="playlist"
                 />
-                {/* <TrackTableMini 
-                    tracks={tracks}
-                    toggleView={props.toggleView}
-                    viewType='playlist'
-                    context_id={props.playlistID}
-                    controls={props.controls}
-                    removeTrack={removeTrack}
-                    addTrack={addTrack}
-                    trackScroll={trackScroll}
-                /> */}
                 <TrackTable 
                     playlist={true}
                     tracks={tracks}
@@ -48,10 +36,6 @@ function PlaylistView(props) {
 
         )
     }
-
-    // useEffect(() => {
-
-    // }, [playlist])
 
     return(
         <div className="create-playlist-view">

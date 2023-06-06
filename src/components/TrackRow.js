@@ -8,15 +8,12 @@ import {msToMinutesAndSeconds, truncateText} from '../helpers/functions';
 function TrackRow({title, artist, album, playlist, duration_ms, id, artistID, toggleView, controls, context, offset, track}) {
 
     function handleClick(context, offset) {
-        // clicking on a row should play the song
         const context_uri=`spotify:playlist:${context}`
         controls('start', context_uri, null, offset, 0, track)
     }
 
     function handleLink(e, id, viewType) {
-        // clicking specifically on the link to artist/album should take you to those respective views
-        // viewType = artist/album views
-        // id = artist/album id
+
         e.stopPropagation()
         if(viewType === 'artist') {
             toggleView('artist', artistID)
