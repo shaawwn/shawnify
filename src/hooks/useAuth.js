@@ -8,6 +8,7 @@ import {useState, useEffect, useRef} from 'react';
  * 
  * handleStrict mode handles access/refresh tokens when strict mode re-renders intially, assigning access/refresh tokens based on their previous value. Since this, I think, should only load twice (with strict mode), it should be fine
  */
+// https://throbbing-field-1967.fly.dev/
 function useAuth(code) {
 
     // handle StrictMode
@@ -24,9 +25,11 @@ function useAuth(code) {
     }
 
     useEffect(() => {
+        // fetch(`https://throbbing-field-1967.fly.dev/login?code=${code}`)
         fetch(`http://localhost:3000/login?code=${code}`)
         .then((response) => response.json())
         .then((data) => {
+            console.log("THROBBING ", data)
             if(strictMode.current === true) {
                 // strict mode will be disabled in production, so can comment out this
                 handleStrictMode()
@@ -48,7 +51,7 @@ function useAuth(code) {
         if(!refreshToken || !expiresIn) return
 
         const interval = setInterval(() => {
-            fetch(`http://localhost:3000/refresh?refresh_token=${refreshToken}`)
+            fetch(`https://throbbing-field-1967.fly.dev/refresh?refresh_token=${refreshToken}`)
             .then((response) => response.json())
             .then((data) => {
                 setAccessToken(data.access_token)

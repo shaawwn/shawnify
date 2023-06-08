@@ -211,6 +211,13 @@ export default function Dashboard(props) {
     useEffect(() => {
         if(accessToken) {
             getCurrentUser(accessToken, setUser)
+            // fetch(`https://old-dust-393.fly.dev/api`, {
+
+            // })
+            // .then((response) => response.json())
+            // .then((data) => {
+            //     console.log("FLY RESPOSNE", data)
+            // })
         }
     }, [accessToken])
 
@@ -243,3 +250,10 @@ export default function Dashboard(props) {
 
 // GRAVEYARD
 
+// import LinkCardCarousel from '../components/LinkCardCarousel'
+// import SpotifyApi from '../helpers/SpotifyApi'
+// import {LinkCard} from '../components/LinkCard';
+
+// const [user, setUser] = useState()
+// const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState([])
+// const api = new SpotifyApi(accessToken)
