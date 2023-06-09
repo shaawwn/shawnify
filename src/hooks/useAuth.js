@@ -26,8 +26,8 @@ function useAuth(code) {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:3000/login?code=${code}`)
-        // fetch(`https://throbbing-field-1967.fly.dev/login?code=${code}`) // actual server for Auth
+        // fetch(`http://localhost:3000/login?code=${code}`)
+        fetch(`https://throbbing-field-1967.fly.dev/login?code=${code}`) // actual server for Auth
         .then((response) => response.json())
         .then((data) => {
             // console.log("data", data)
