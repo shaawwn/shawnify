@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/shawnify/static/css/main.ca5c9e96.css",
+    "main.js": "/shawnify/static/js/main.da321d37.js",
+    "index.html": "/shawnify/index.html",
+    "main.ca5c9e96.css.map": "/shawnify/static/css/main.ca5c9e96.css.map",
+    "main.da321d37.js.map": "/shawnify/static/js/main.da321d37.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca5c9e96.css",
+    "static/js/main.da321d37.js"
+  ]
+}
