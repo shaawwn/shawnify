@@ -19,19 +19,20 @@ function useAuth(code) {
 
     function handleStrictMode() {
         // development only to handle StrictMode re-renders and authorization
+        // React will send duplicate requests to API server with Strict Mode on, using a one-time code for authorization, this will cause an error that can rewrite the access token to null since spotify will send an error response instead of token. This ensures that the access token is not rewritten.
         setAccessToken((prevAccessToken) => prevAccessToken)
         setRefreshToken((prevRefreshToken) => prevRefreshToken)
         setExpiresIn((prevExpiresIn) => prevExpiresIn)
     }
 
     useEffect(() => {
-        // fetch(`https://throbbing-field-1967.fly.dev/login?code=${code}`)
-        fetch(`http://localhost:3000/login?code=${code}`)
+        // fetch(`http://localhost:3000/login?code=${code}`)
+        fetch(`https://throbbing-field-1967.fly.dev/login?code=${code}`) // actual server for Auth
         .then((response) => response.json())
         .then((data) => {
-            console.log("THROBBING ", data)
+            // console.log("data", data)
             if(strictMode.current === true) {
-                // strict mode will be disabled in production, so can comment out this
+                // strict mode will be disabled when deployed
                 handleStrictMode()
             } else {
                 setAccessToken(data.access_token)

@@ -9,6 +9,8 @@ import HomeView from '../views/HomeView';
 import SearchView from '../views/SearchView';
 import SearchResultsView from '../views/SearchResultsView';
 import LibraryView from '../views/LibraryView';
+import ErrorView from '../views/ErrorView'
+// import AlbumView from '../views/_AlbumView';
 import AlbumView from '../views/AlbumView'
 import ArtistView from '../views/ArtistView';
 import GridView from '../views/GridView'
@@ -35,6 +37,7 @@ export default function Dashboard(props) {
     const accessToken = useAuth(props.code)
     const [playback, controls] = usePlayback(accessToken, false) 
     const [user, setUser] = useState();
+    const [premium, setPremium] = useState(false) // cannot use app if user doens't have a premium app
     const history = useHistory()
     const [playlists, setPlaylists] = usePlaylists(accessToken)
     const [view, setView] = useState('home')
@@ -111,6 +114,11 @@ export default function Dashboard(props) {
 
     function displayView() {
 
+        if(premium !== true) {
+            return(
+                <ErrorView />
+            )
+        }
         if(view === 'home') {
             return(
                 <HomeView 
@@ -186,6 +194,10 @@ export default function Dashboard(props) {
                     controls={controls}
                 />
             )
+        } else if(view === 'error') {
+            return(
+                <ErrorView />
+            )
         }
     }
 
@@ -210,14 +222,7 @@ export default function Dashboard(props) {
 
     useEffect(() => {
         if(accessToken) {
-            getCurrentUser(accessToken, setUser)
-            // fetch(`https://old-dust-393.fly.dev/api`, {
-
-            // })
-            // .then((response) => response.json())
-            // .then((data) => {
-            //     console.log("FLY RESPOSNE", data)
-            // })
+            getCurrentUser(accessToken, setUser, setPremium)
         }
     }, [accessToken])
 

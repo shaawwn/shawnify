@@ -1,5 +1,5 @@
 
-function getCurrentUser(accessToken, setUser) {
+function getCurrentUser(accessToken, setUser, setPremium) {
 
     fetch(`https://api.spotify.com/v1/me`, {
         headers: {
@@ -8,6 +8,10 @@ function getCurrentUser(accessToken, setUser) {
     }).then((response) => response.json())
     .then((data) => {
         // console.log("USER DATA", data)
+
+        if(data.product === 'premium') {
+            setPremium(true)
+        }
         setUser(data)
     })
 }
