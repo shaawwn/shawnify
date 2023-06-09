@@ -1,6 +1,6 @@
 {
+  "homepage": "https://shaawwn.github.io/shawnify",
   "name": "spotify-simple",
-  "homepage": "http://shaawwn.github.io/shawnify",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
